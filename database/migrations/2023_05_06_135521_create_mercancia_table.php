@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre', 45);
             $table->unsignedBigInteger('id_tipo_mercancia')->nullable();
 
-//            $table->foreign('id_tipo_mercancia')->references('id')->on('tipo_mercancias')->onDelete('no action');
+            $table->foreign('id_tipo_mercancia')->references('id')->on('tipo_mercancias')->onDelete('no action');
 
             $table->timestamps();
         });

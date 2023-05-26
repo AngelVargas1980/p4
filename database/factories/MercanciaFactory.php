@@ -19,7 +19,7 @@ class MercanciaFactory extends Factory
         return [
             'codigo'=>$this->faker->languageCode,
             'nombre'=> $this->faker->name,
-            'id_tipo_mercancia'=>$this->faker->unique(true)->numberBetween(1, 1000),
+            'id_tipo_mercancia'=>$this->faker->unique(true)->numberBetween(1, 25),
 
         ];
     }
