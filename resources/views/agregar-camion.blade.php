@@ -24,9 +24,9 @@
                 <label for="">Modelo</label>
                 <input type="text" name="modelo" class="form-control" required>
                 <label for="">Capacidad Toneladas</label>
-                <input type="number" name="capacidad_toneladas" class="form-control" required>
+                <input type="text" name="capacidad_toneladas" class="form-control" required>
                 <label for="">Transporte Codigo</label>
-                <input type="number" name="transporte_codigo" class="form-control" required>
+                <input type="text" name="transporte_codigo" class="form-control" required>
 
                 <br>
                 <a href="{{ route("camiones.indexc") }}" class="btn btn-info">

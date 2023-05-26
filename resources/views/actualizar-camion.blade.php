@@ -22,9 +22,9 @@
                 <label for="">Modelo</label>
                 <input type="text" name="modelo" class="form-control" required value="{{$camiones->modelo}}">
                 <label for="">Capacidad Toneladas</label>
-                <input type="number" name="capacidad_toneladas" class="form-control" required value="{{$camiones->capacidad_toneladas}}">
+                <input type="text" name="capacidad_toneladas" class="form-control" required value="{{$camiones->capacidad_toneladas}}">
                 <label for="">Transporte Codigo</label>
-                <input type="number" name="transporte_codigo" class="form-control" required value="{{$camiones->transporte_codigo}}">
+                <input type="text" name="transporte_codigo" class="form-control" required value="{{$camiones->transporte_codigo}}">
 
                 <br>
                 <a href="{{ route("camiones.indexc") }}" class="btn btn-info">

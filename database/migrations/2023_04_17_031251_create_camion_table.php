@@ -19,7 +19,7 @@ return new class extends Migration
             $table->year('modelo');
             $table->integer('capacidad_toneladas');
             $table->unsignedBigInteger('transporte_codigo')->nullable();
-            $table->foreign('transporte_codigo')->references('id')->on('transportes')->onDelete('no action');
+            //$table->foreign('transporte_codigo')->references('id')->on('transportes')->onDelete('no action');
             $table->timestamps();
         });
     }
