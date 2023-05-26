@@ -6,7 +6,7 @@
 @section('contenidotm')
 
     <div class="card" xmlns="http://www.w3.org/1999/html">
-        <h5 class="card-header">PREDIOS</h5>
+        <h5 class="card-header">TIPO DE MERCACIA</h5>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
