@@ -26,13 +26,13 @@ class CamionController extends Controller
         //$datos = Personas::all();
         //$datos = Personas::orderBy('id', 'desc')->paginate(3);
         $datos = Camion::orderBy('id', 'asc')->paginate(25);
-        return view('inicio-camion', compact('datos'));
+        return view('camion/inicio-camion', compact('datos'));
     }
 
     public function createc()
     {
         //el formulario donde nosotros agregamos datos
-        return view('agregar-camion');
+        return view('camion/agregar-camion');
     }
 
     public function storec(Request $request)
@@ -97,7 +97,7 @@ class CamionController extends Controller
     {
         //Servira para obtener un registro de nuestra tabla
         $camiones = Camion::find($id);
-        return view("eliminar-camion", compact('camiones'));
+        return view("camion/eliminar-camion", compact('camiones'));
     }
 
     public function editc($id)
@@ -105,7 +105,7 @@ class CamionController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $camiones = Camion::find($id);
-        return view("actualizar-camion", compact('camiones'));
+        return view("camion/actualizar-camion", compact('camiones'));
         //echo $id;
     }
 

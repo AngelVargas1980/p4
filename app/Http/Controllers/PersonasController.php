@@ -13,7 +13,7 @@ class PersonasController extends Controller
         //$datos = Personas::all();
         //$datos = Personas::orderBy('id', 'desc')->paginate(3);
         $datos = Personas::orderBy('paterno', 'asc')->paginate(25);
-        return view('inicio', compact('datos'));
+        return view('piloto/inicio', compact('datos'));
 
     }
 
@@ -21,7 +21,7 @@ class PersonasController extends Controller
     {
         //el formulario donde nosotros agregamos datos
 
-        return view('agregar');
+        return view('piloto/agregar');
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class PersonasController extends Controller
     {
         //Servira para obtener un registro de nuestra tabla
         $personas = Personas::find($id);
-        return view("eliminar", compact('personas'));
+        return view("piloto/eliminar", compact('personas'));
     }
 
     public function edit($id)
@@ -49,7 +49,7 @@ class PersonasController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $personas = Personas::find($id);
-        return view("actualizar", compact('personas'));
+        return view("piloto/actualizar", compact('personas'));
         //echo $id;
     }
 

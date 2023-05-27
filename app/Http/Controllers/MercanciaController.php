@@ -11,13 +11,13 @@ class MercanciaController extends Controller
     public function indexm()
     {
         $datos = Mercancia::orderBy('nombre', 'asc')->paginate(3);
-        return view('inicio-mercancia', compact('datos'));
+        return view('mercancia/inicio-mercancia', compact('datos'));
     }
 
 
     public function createm()
     {
-        return view('agregar-mercancia');
+        return view('mercancia/agregar-mercancia');
     }
 
 
@@ -40,7 +40,7 @@ class MercanciaController extends Controller
     {
         //Servira para obtener un registro de nuestra tabla
         $mercancias = Mercancia::find($id);
-        return view("eliminar-mercancia", compact('mercancias'));
+        return view("mercancia/eliminar-mercancia", compact('mercancias'));
     }
 
 
@@ -49,7 +49,7 @@ class MercanciaController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $mercancias = Mercancia::find($id);
-        return view("actualizar-mercancia", compact('mercancias'));
+        return view("mercancia/actualizar-mercancia", compact('mercancias'));
         //echo $id;
     }
 

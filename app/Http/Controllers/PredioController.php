@@ -9,13 +9,13 @@ class PredioController extends Controller
 {
     public function indexp()
     {
-        $datos = Predio::orderBy('nombre_predio', 'asc')->paginate(3);
-        return view('inicio-predio', compact('datos'));
+        $datos = Predio::orderBy('nombre_predio', 'asc')->paginate(5);
+        return view('predio/inicio-predio', compact('datos'));
     }
 
     public function createp()
     {
-        return view('agregar-predio');
+        return view('predio/agregar-predio');
     }
 
     public function storep(Request $request)
@@ -36,7 +36,7 @@ class PredioController extends Controller
     {
         //Servira para obtener un registro de nuestra tabla
         $predios = Predio::find($id);
-        return view("eliminar-predio", compact('predios'));
+        return view("predio/eliminar-predio", compact('predios'));
     }
 
     public function editp($id)
@@ -44,7 +44,7 @@ class PredioController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $predios = Predio::find($id);
-        return view("actualizar-predio", compact('predios'));
+        return view("predio/actualizar-predio", compact('predios'));
         //echo $id;
     }
 

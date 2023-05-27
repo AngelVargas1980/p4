@@ -14,12 +14,12 @@ class TransporteController extends Controller
     public function indext()
     {
         $datos = Transporte::orderBy('id', 'asc')->paginate(25);
-        return view('inicio-transporte', compact('datos'));
+        return view('transporte/inicio-transporte', compact('datos'));
     }
 
         public function createt()
     {
-        return view('agregar-transporte');
+        return view('transporte/agregar-transporte');
     }
 
        public function storet(Request $request)
@@ -38,7 +38,7 @@ class TransporteController extends Controller
     public function showt($id)
     {
         $transportes = Transporte::find($id);
-        return view("eliminar-transporte", compact('transportes'));
+        return view("transporte/eliminar-transporte", compact('transportes'));
     }
 
     public function editt($id)
@@ -46,7 +46,7 @@ class TransporteController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $transportes = Transporte::find($id);
-        return view("actualizar-transporte", compact('transportes'));
+        return view("transporte/actualizar-transporte", compact('transportes'));
         //echo $id;
     }
 
@@ -78,9 +78,9 @@ class TransporteController extends Controller
             return redirect()->route('transportes.indext')->with('success', 'El post ha sido eliminado exitosamente.');
         } catch (QueryException $e) {
             if ($e->getCode() === '23000') {
-                return redirect()->route('transportes.indext')->with('error', 'No se puede eliminar el post debido a una violación de clave foránea.');
+                return redirect()->route('transporte/transportes.indext')->with('error', 'No se puede eliminar el post debido a una violación de clave foránea.');
             } else {
-                return redirect()->route('transportes.indext')->with('error', 'Ocurrió un error al eliminar el post.');
+                return redirect()->route('transporte/transportes.indext')->with('error', 'Ocurrió un error al eliminar el post.');
             }
         }
 

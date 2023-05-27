@@ -1,46 +1,49 @@
+@extends('layout.plantilla')
 
-@extends('layout/plantilla')
+@section('tituloPagina', 'Crud de transportes')
 
-@section('tituloPagina', 'Crud de tipo_mercancia')
-
-@section('contenidotm')
+@section('contenidot')
 
     <div class="card" xmlns="http://www.w3.org/1999/html">
-        <h5 class="card-header">TIPO DE MERCACIA</h5>
+        <h5 class="card-header">TRANSPORTES</h5>
+        <h7>Plantilla de inicio/indext</h7>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
-                    @if($mensaje = \Illuminate\Support\Facades\Session::get('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ $mensaje }}
-                        </div>
 
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
                     @endif
 
 
                 </div>
             </div>
-            <h5 class="card-title text-center">Listado de tipos de mercancia en el sistema</h5>
+            <h5 class="card-title text-center">Listado de transportes en el sistema</h5>
             <p>
                 <a href="{{ route("transportes.createt") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo transporte
+                    <span class="fas fa-user-plus"></span> Agregar nuevo transporte
                 </a>
 
-                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo camion
-                </a>
+{{--                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo camion--}}
+{{--                </a>--}}
 
-                <a href="{{ route("personas.create") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo piloto
-                </a>
+{{--                <a href="{{ route("personas.create") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo piloto--}}
+{{--                </a>--}}
 
-                <a href="{{ route("predios.createp") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo predio
-                </a>
-
-                <a href="{{ route("tmercancias.createtm") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo Tipo_mercancia
-                </a>
+{{--                <a href="{{ route("predios.createp") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo predio--}}
+{{--                </a>--}}
 
             </p>
             <hr>
@@ -50,8 +53,8 @@
                 <table class="table table-sm table-bordered">
                     <thead>
                     <th>Id</th>
-                    <th>Descripcion</th>
-{{--                    <th>Direccion</th>--}}
+                    <th>Nombre</th>
+                    <th>Razon_social</th>
                     {{--                    <th>Fecha</th>--}}
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -60,12 +63,12 @@
                     @foreach($datos as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->descripcion }}</td>
-{{--                            <td>{{ $item->direccion }}</td>--}}
-                            {{--<td>{{ $item->fecha }}</td>--}}
+                            <td>{{ $item->nombre }}</td>
+                            <td>{{ $item->razon_social }}</td>
+                            {{--                            <td>{{ $item->fecha }}</td>--}}
 
                             <td>
-                                <form action="{{ route("tmercancias.edittm", $item->id) }}" method="GET">
+                                <form action="{{ route("transportes.editt", $item->id) }}" method="GET">
                                     <button class="btn btn-warning btn-sm">
                                         <span class="fas fa-user-edit"></span>
                                     </button>
@@ -73,7 +76,7 @@
                             </td>
 
                             <td>
-                                <form action="{{ route("tmercancias.showtm", $item->id) }}" method="GET">
+                                <form action="{{ route("transportes.showt", $item->id) }}" method="GET">
                                     <button class="btn btn-danger btn-sm">
                                         <span class="fas fa-user-times"></span>
                                     </button>
@@ -85,6 +88,7 @@
                     </tbody>
 
                 </table>
+
                 <hr>
                 <br>
                 <br>
@@ -103,9 +107,7 @@
         </div>
     </div>
 
-
 @endsection
-
 
 
 

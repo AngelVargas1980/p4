@@ -1,5 +1,4 @@
-
-@extends('layout/plantilla')
+@extends('layout.plantilla')
 
 @section('tituloPagina', 'Crud de mercancias')
 
@@ -7,6 +6,7 @@
 
     <div class="card" xmlns="http://www.w3.org/1999/html">
         <h5 class="card-header">MERCANCIAS</h5>
+        <h7 class="card-header">Estoy en la vista mercancia/inicio-mercancia</h7>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -22,24 +22,24 @@
             </div>
             <h5 class="card-title text-center">Listado de mercancias en el sistema</h5>
             <p>
-                <a href="{{ route("transportes.createt") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo transporte
-                </a>
+{{--                <a href="{{ route("transportes.createt") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo transporte--}}
+{{--                </a>--}}
 
-                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo camion
-                </a>
+{{--                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo camion--}}
+{{--                </a>--}}
 
-                <a href="{{ route("personas.create") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo piloto
-                </a>
+{{--                <a href="{{ route("personas.create") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo piloto--}}
+{{--                </a>--}}
 
-                <a href="{{ route("predios.createp") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo predio
-                </a>
+{{--                <a href="{{ route("predios.createp") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo predio--}}
+{{--                </a>--}}
 
                 <a href="{{ route("mercancias.createm") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo mercancia
+                    <span class="fas fa-user-plus"></span> Agregar nuevo mercancia
                 </a>
 
             </p>
@@ -102,7 +102,6 @@
 
         </div>
     </div>
-
 
 @endsection
 

@@ -11,13 +11,13 @@ class TipoMercanciaController extends Controller
     public function indextm()
     {
         $datos = Tipo_mercancia::orderBy('id', 'asc')->paginate(3);
-        return view('inicio-tipo_mercancia', compact('datos'));
+        return view('tipoMercancia/inicio-tipo_mercancia', compact('datos'));
     }
 
 
     public function createtm()
     {
-        return view('agregar-tipo_mercancia');
+        return view('tipoMercancia/agregar-tipo_mercancia');
     }
 
 
@@ -40,7 +40,7 @@ class TipoMercanciaController extends Controller
     {
         //Servira para obtener un registro de nuestra tabla
         $tmercancias = Tipo_mercancia::find($id);
-        return view("eliminar-tipo_mercancia", compact('tmercancias'));
+        return view("tipoMercancia/eliminar-tipo_mercancia", compact('tmercancias'));
     }
 
 
@@ -49,7 +49,7 @@ class TipoMercanciaController extends Controller
         //Este método nos sirve para traer los datos que se van a editar
         //y los coloca en un formulario"
         $tmercancias = Tipo_mercancia::find($id);
-        return view("actualizar-tipo_mercancia", compact('tmercancias'));
+        return view("tipoMercancia/actualizar-tipo_mercancia", compact('tmercancias'));
         //echo $id;
     }
 

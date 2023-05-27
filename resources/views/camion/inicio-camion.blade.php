@@ -1,5 +1,4 @@
-
-@extends('layout/plantilla')
+@extends('layout.plantilla')
 
 @section('tituloPagina', 'Crud de camiones')
 
@@ -7,7 +6,7 @@
 
     <div class="card" xmlns="http://www.w3.org/1999/html">
         <h5 class="card-header">CAMIONES</h5>
-        <h7 class="card-header">inicio-camion</h7>
+        <h7 class="card-header">Estoy en la vista camion/inicio-camion</h7>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -20,17 +19,17 @@
 
 
 
-{{--                    @if (session('success'))--}}
-{{--                        <div class="alert alert-success">--}}
-{{--                            {{ session('success') }}--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
+                    {{--                    @if (session('success'))--}}
+                    {{--                        <div class="alert alert-success">--}}
+                    {{--                            {{ session('success') }}--}}
+                    {{--                        </div>--}}
+                    {{--                    @endif--}}
 
-{{--                    @if (session('error'))--}}
-{{--                        <div class="alert alert-danger">--}}
-{{--                            {{ session('error') }}--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
+                    {{--                    @if (session('error'))--}}
+                    {{--                        <div class="alert alert-danger">--}}
+                    {{--                            {{ session('error') }}--}}
+                    {{--                        </div>--}}
+                    {{--                    @endif--}}
 
 
                 </div>
@@ -39,20 +38,20 @@
             <h7 class="card-title text-center">inicio/indexc</h7>
             <p>
                 <a href="{{ route("camiones.createc") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo camión
+                    <span class="fas fa-user-plus"></span> Agregar nuevo camión
                 </a>
 
-                <a href="{{ route("transportes.createt") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo transporte
-                </a>
+{{--                <a href="{{ route("transportes.createt") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo transporte--}}
+{{--                </a>--}}
 
-                <a href="{{ route("personas.create") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo piloto
-                </a>
+{{--                <a href="{{ route("personas.create") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo piloto--}}
+{{--                </a>--}}
 
-                <a href="{{ route("predios.createp") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo predio
-                </a>
+{{--                <a href="{{ route("predios.createp") }}" class="btn btn-primary">--}}
+{{--                    <span class="fas fa-user-plus"></span> Agregar nuevo predio--}}
+{{--                </a>--}}
 
             </p>
             <hr>
@@ -91,7 +90,7 @@
                             </td>
 
                             <td>
-                                <form action="{{ route("camiones.showc", $item->id) }}"  method="GET">
+                                <form action="{{ route("camiones.showc", $item->id) }}" method="GET">
                                     <button class="btn btn-danger btn-sm">
                                         <span class="fas fa-user-times"></span>
                                     </button>
