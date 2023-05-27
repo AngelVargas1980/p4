@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
 
-use function GuzzleHttp\Promise\all;
+
 
 
 
@@ -57,9 +57,9 @@ class CamionController extends Controller
                 'placa_camion' => 'required|string',
                 'marca' => 'required|string ',
                 'color' => 'required|string',
-                'modelo ' => 'required|integer',
-                'capacidad_toneladas ' => 'required|integer ',
-                'transporte_codigo' => 'required|exists:transportes.id',
+                'modelo' => 'required|integer',
+                'capacidad_toneladas' => 'required|integer ',
+                'transporte_codigo' => 'required',
 
             ])->safe()->all();
 
@@ -72,7 +72,7 @@ class CamionController extends Controller
             $camiones->color = $validateData['color'];
             $camiones->modelo = $validateData['modelo'];
             $camiones->capacidad_toneladas = $validateData['capacidad_toneladas'];
-            $camiones->transporte_codigo = $validateData['transportes_codigo'];
+            $camiones->transporte_codigo = $validateData['transporte_codigo'];
             $camiones->save();
 
             return redirect()->back()->with('success', ' creada correctamente');
