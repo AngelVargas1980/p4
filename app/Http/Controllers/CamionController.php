@@ -7,10 +7,18 @@ use App\Models\Transporte;
 use Illuminate\Http\Request;
 
 use Illuminate\Database\QueryException;
-//use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Redirect;
+
+use function GuzzleHttp\Promise\all;
+
+
 
 class CamionController extends Controller
 {
+
+    protected $connection = 'transportes';
 
     public function indexc()
     {
@@ -29,19 +37,61 @@ class CamionController extends Controller
 
     public function storec(Request $request)
     {
-        //Sirve para guardar datos en la base de datos, esta en la vista agregar camion
-        $camiones = new Camion();
-        $camiones->id = $request->post('id');
-        $camiones->placa_camion = $request->post('placa_camion');
-        $camiones->marca = $request->post('marca');
-        $camiones->color = $request->post('color');
-        $camiones->modelo = $request->post('modelo');
-        $camiones->capacidad_toneladas = $request->post('capacidad_toneladas');
-        $camiones->transporte_codigo = $request->post('transporte_codigo');
-        $camiones->save();
 
-        return redirect()->route("camiones.indexc");
+        //Sirve para guardar datos en la base de datos, esta en la vista agregar camion
+//        $camiones = new Camion();
+//        $camiones->id = $request->post('id');
+//        $camiones->placa_camion = $request->post('placa_camion');
+//        $camiones->marca = $request->post('marca');
+//        $camiones->color = $request->post('color');
+//        $camiones->modelo = $request->post('modelo');
+//        $camiones->capacidad_toneladas = $request->post('capacidad_toneladas');
+//        $camiones->transporte_codigo = $request->post('transporte_codigo');
+//        $camiones->save();
+//        return redirect()->route("camiones.indexc");
+//        }
+
+        try {
+            $validateData = validator::make($request->all(), [
+                'id' => 'required|integer',
+                'placa_camion' => 'required|string',
+                'marca' => 'required|string ',
+                'color' => 'required|string',
+                'modelo ' => 'required|integer',
+                'capacidad_toneladas ' => 'required|integer ',
+                'transporte_codigo' => 'required|exists:transportes.id',
+
+            ])->safe()->all();
+
+
+            //Sirve para guardar datos en la base de datos
+            $camiones = new Camion();
+            $camiones->id = $validateData['id'];
+            $camiones->placa_camion = $validateData['placa_camion'];
+            $camiones->marca = $validateData['marca'];
+            $camiones->color = $validateData['color'];
+            $camiones->modelo = $validateData['modelo'];
+            $camiones->capacidad_toneladas = $validateData['capacidad_toneladas'];
+            $camiones->transporte_codigo = $validateData['transportes_codigo'];
+            $camiones->save();
+
+            return redirect()->back()->with('success', ' creada correctamente');
+        } catch (QueryException $e) {
+            if ($e->getCode() === '22003') {
+                // Error 22003: Valor numérico fuera de rango
+                return redirect()->back()->with('error', 'Error al crear camiones: Valor de transporte fuera de rango');
+            } else {
+                // Otro error de clave foránea o error de base de datos
+                return redirect()->back()->with('error', 'error de base de datos : ' . $e->getMessage());
+            }
+        } catch (\Exception $e) {
+            // Capturar excepción general
+            // Manejar cualquier otro tipo de excepción que pueda ocurrir
+            return redirect()->back()->with('error', 'Error de otro tipo fuera del crud publicación: ' . $e->getMessage());
+        }
     }
+
+
 
     public function showc($id)
     {
@@ -77,44 +127,13 @@ class CamionController extends Controller
 
     public function destroyc($id)
 
-//    public function delete($id)
+
     {
 //        Elimina un registro, se encuentra en la vista eliminar
         $camiones = Camion::find($id);
         $camiones->delete();
-        return redirect()->route("camiones.indexc");
-
-
-//        try {
-//            $camiones = Camion::findOrFail($id);
-//            $camiones->destroyc();
-//            return redirect()->route('camiones.indexc')->with('success', 'Camion eliminado exitosamente.');
-//        } catch (Exception $e) {
-//            return redirect()->route('camiones.indexc')->with('error', 'Ocurrió un error al eliminar a la personas.');
-//        }
-//    }
-//
-//    public function store(Request $request, $transporte_codigo)
-//    {
-//        try {
-//            $transportes = Transporte::findOrFail($transporte_codigo);
-//
-//            $validatedData = $request->validate([
-//                'content' => 'required|max:255',
-//                // Otras reglas de validación
-//            ]);
-//
-//            // Crear un nuevo comentario con los datos validados
-//            $camiones = new Camion();
-//            $camiones->content = $validatedData['content'];
-//            // Asignar otros valores al comentario si es necesario
-//            $camiones->transporte()->associate($transportes);
-//            $camiones->save();
-//
-//            return redirect()->route('transportes.showt', $transporte_codigo)->with('success', 'El comentario ha sido agregado exitosamente.');
-//        } catch (QueryException $e) {
-//            return redirect()->route('transportes.showt', $transporte_codigo)->with('error', 'No se puede agregar el comentario debido a una violación de clave foránea.');
-//        }
-   }
+        return redirect()->route("camiones.indexc")->with("success", "Eliminado con exito!");
+    }
 
 }
+
